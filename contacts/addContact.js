@@ -1,13 +1,13 @@
 const fs = require("fs/promises");
 const path = require("path");
 const colors = require("colors");
-const contactsPath = path.resolve("./db/contacts.json");
+const contactsPath = path.join(__dirname, "..", "db", "contacts.json");
 
 const addContact = async (name, email, phone) => {
   try {
     if (!name) return console.log("Введите имя".red);
     const data = await fs.readFile(contactsPath, "utf8");
-    const parsedData = JSON.parse(data.toString());
+    const parsedData = JSON.parse(data);
     const foundItem = parsedData.find((el) => {
       return el.name.toLowerCase() === name.toLowerCase();
     });
@@ -30,7 +30,7 @@ const addContact = async (name, email, phone) => {
       "utf8"
     );
     const result = await fs.readFile(contactsPath, "utf8");
-    const parsedResult = JSON.parse(result.toString());
+    const parsedResult = JSON.parse(result);
     console.log("Новый контакт добавлен".blue);
     console.log("Обновленный список контактов".yellow);
     console.table(parsedResult);

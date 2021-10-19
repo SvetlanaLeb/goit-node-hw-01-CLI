@@ -1,7 +1,7 @@
 const fs = require("fs/promises");
 const path = require("path");
 const colors = require("colors");
-const contactsPath = path.resolve("./db/contacts.json");
+const contactsPath = path.join(__dirname, "..", "db", "contacts.json");
 
 const listContacts = async () => {
   try {
