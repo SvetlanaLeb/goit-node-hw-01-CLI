@@ -1,5 +1,5 @@
-let fs = require("fs/promises");
-let path = require("path");
+const fs = require("fs/promises");
+const path = require("path");
 const colors = require("colors");
 const contactsPath = path.resolve("./db/contacts.json");
 
